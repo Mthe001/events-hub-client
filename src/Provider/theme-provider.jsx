@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 
 const initialState = {
     theme: "system",
@@ -49,6 +50,19 @@ export function ThemeProvider({
         </ThemeProviderContext.Provider>
     );
 }
+
+// Add prop types validation for the props
+ThemeProvider.propTypes = {
+    children: PropTypes.node.isRequired, // Validate that children is required and can be any valid React node
+    defaultTheme: PropTypes.oneOf(["system", "light", "dark"]), // Validate that defaultTheme is one of "system", "light", or "dark"
+    storageKey: PropTypes.string, // Validate that storageKey is a string
+};
+
+// Default values for props in case they're not provided
+ThemeProvider.defaultProps = {
+    defaultTheme: "system",
+    storageKey: "vite-ui-theme",
+};
 
 export const useTheme = () => {
     const context = useContext(ThemeProviderContext);
