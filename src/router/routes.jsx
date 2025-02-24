@@ -6,7 +6,8 @@ import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "@/pages/ProfilePage/UserProfile";
-import { Settings } from "lucide-react";
+import Settings from "@/pages/ProfilePage/Settings";
+
 
 
 
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/settings',
-                element: <PrivateRoute><Settings /></PrivateRoute>,
+                element: <PrivateRoute><Settings/></PrivateRoute>,
             },
 
              

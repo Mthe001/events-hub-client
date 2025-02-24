@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import  { useState,  } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 import axios from "axios";
 import useAuth from "@/hooks/useAuth"; // Assuming you have a custom hook for authentication
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-
 
 // Custom component to capture click events on the map
 const LocationPicker = ({ setLocation }) => {
@@ -17,6 +17,10 @@ const LocationPicker = ({ setLocation }) => {
     });
 
     return null;
+};
+
+LocationPicker.propTypes = {
+    setLocation: PropTypes.func.isRequired, // Validate setLocation as a required function
 };
 
 const Settings = () => {
@@ -155,10 +159,21 @@ const Settings = () => {
                     </div>
                 </form>
             </div>
-
-           
         </div>
     );
+};
+
+Settings.propTypes = {
+    user: PropTypes.shape({
+        displayName: PropTypes.string,
+        email: PropTypes.string.isRequired,
+        location: PropTypes.shape({
+            lat: PropTypes.number,
+            lng: PropTypes.number,
+        }),
+        description: PropTypes.string,
+        photoURL: PropTypes.string,
+    }),
 };
 
 export default Settings;
