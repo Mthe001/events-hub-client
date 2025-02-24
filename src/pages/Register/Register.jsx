@@ -9,7 +9,7 @@ import Loader from "@/shared/LoaderSpinner";
 import Lottie from "lottie-react";
 import register from "@/assets/login-anime.json";
 
-const SignUp = () => {
+const Register = () => {
     const { createUser, user, updateUser, googleSignIn, setUser, loading, setLoading } = useAuth();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
@@ -198,4 +198,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Register;
