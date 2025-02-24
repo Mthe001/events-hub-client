@@ -22,7 +22,6 @@ createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
-
           <ThemeProvider defaultTheme='light'>
             <RouterProvider router={router}></RouterProvider>
             <Toaster position='top-right' />

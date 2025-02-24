@@ -1,13 +1,13 @@
-import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/layout/Mainlayout";
 import ErrorPage from "@/pages/ErrorPage/errorpage";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
-import Register from "@/pages/Register/Register";
+import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
+import Register from "@/pages/Register/Register";
 import Profile from "@/pages/ProfilePage/UserProfile";
 import Settings from "@/pages/ProfilePage/Settings";
-
+import Addevent from "@/pages/Add Event/Addevent";
 
 
 
@@ -23,22 +23,26 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path:'/login',
-                element:<Login/>
+                path: "/login",
+                element: <Login></Login>
             },
             {
                 path:'/register',
-                element: <Register/>,
+                element:<Register/>,
             },
             {
-                path: '/profile',
-                element: <PrivateRoute><Profile /></PrivateRoute>,
+                path:'/profile',
+                element:<PrivateRoute><Profile/></PrivateRoute>,
             },
             {
-                path: '/settings',
-                element: <PrivateRoute><Settings/></PrivateRoute>,
+                path:'/settings',
+                element:<PrivateRoute><Settings/></PrivateRoute>,
             },
-
+            {
+                path:'/add-event',
+                element:<PrivateRoute><Addevent/></PrivateRoute>,
+            },
+           
              
            
 

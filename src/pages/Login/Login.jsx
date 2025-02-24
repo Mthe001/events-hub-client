@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "@/hooks/useAuth";
-import Loader from "@/shared/LoaderSpinner";
 import toast from "react-hot-toast";
 import { saveUser } from "@/api/Utils";
 import Lottie from "lottie-react";
@@ -16,21 +15,6 @@ const Login = () => {
     const from = location?.state?.from?.pathname || "/";
     const [showPassword, setShowPassword] = useState(false);
 
-   
-    const [isLoading, setIsLoading] = useState(true);
-
-    
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);  
-        }, 1000);
-
-        return () => clearTimeout(timer); 
-    }, []);
-
-    if (isLoading) return <div className="flex min-h-screen items-center justify-center"><Loader /></div>; 
-
-   
     if (user) return <Navigate to={from} replace={true} />;
 
     const handleSubmit = async (e) => {

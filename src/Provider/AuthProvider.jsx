@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'; // Import PropTypes
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -10,6 +9,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    
     const provider = new GoogleAuthProvider();
 
     const googleSignIn = () => {
@@ -74,11 +74,6 @@ const AuthProvider = ({ children }) => {
     };
 
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
-};
-
-// Add prop types validation
-AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired, // children should be a node and is required
 };
 
 export default AuthProvider;
