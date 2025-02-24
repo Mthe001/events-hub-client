@@ -60,6 +60,7 @@ This project is a great way to flex your skills in dynamic UI design, API handli
 git clone https://github.com/Mthe001/events-hub-client.git
 cd local-events-hub
 
+```
 
 ### 👤 Author
 - **Name:** MThe001
