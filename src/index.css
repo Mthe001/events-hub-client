@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scroll bar for Firefox */
+html {
+  scrollbar-width: none;
+}
+
+body {
+  overflow: auto;
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
