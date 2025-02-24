@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "@/hooks/useAuth";
@@ -10,13 +10,27 @@ import loginAnim from "@/assets/reg-anime.json";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-    const { signin, googleSignIn, loading, setLoading, user } = useAuth();
+    const { signin, googleSignIn, setLoading, user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
     const [showPassword, setShowPassword] = useState(false);
 
-    if (loading) return <Loader />;
+   
+    const [isLoading, setIsLoading] = useState(true);
+
+    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);  
+        }, 3000);
+
+        return () => clearTimeout(timer); 
+    }, []);
+
+    if (isLoading) return <div className="flex min-h-screen items-center justify-center"><Loader /></div>; 
+
+   
     if (user) return <Navigate to={from} replace={true} />;
 
     const handleSubmit = async (e) => {
@@ -53,18 +67,18 @@ const Login = () => {
     return (
         <div>
             <Helmet>
-                <title>Login ! News 240</title>
+                <title>Login | News 240</title>
             </Helmet>
 
             <div className="my-20 flex items-center justify-center">
                 <div className="max-w-4xl w-[90%] bg-background border-2 p-6 shadow-lg rounded-lg flex flex-col md:flex-row overflow-hidden">
                     {/* Left Section: Image/Illustration */}
-                    <div className="md:w-1/2 p-6 flex items-center justify-center ">
+                    <div className="md:w-1/2 p-6 flex items-center justify-center">
                         <Lottie animationData={loginAnim} loop={true} style={{ filter: "hue-rotate(45deg)" }} />
                     </div>
 
                     {/* Right Section: Form */}
-                    <div className="md:w-1/2 p-8 border-2 rounded-md" >
+                    <div className="md:w-1/2 p-8 border-2 rounded-md">
                         <h2 className="text-2xl font-bold text-gray-800 mb-6">Login</h2>
                         <form onSubmit={handleSubmit}>
                             {/* Email Field */}
