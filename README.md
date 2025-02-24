@@ -67,8 +67,9 @@ cd local-events-hub
 I'm a passionate web developer with a love for creating dynamic, user-friendly applications. I enjoy exploring new technologies and building projects that make a difference.
 
 ## ✉️ Contact Information:
-- **Email:** [mtheredwanulhaque@gmail.com]
-- **GitHub:** https://github.com/Mthe001
+- **Email:** [mtheredwanulhaque@gmail.com](mailto:mtheredwanulhaque@gmail.com)
+- **GitHub:** [https://github.com/Mthe001](https://github.com/Mthe001)
+
 
 ## 🧩 Hobbies:
 - **Coding:** I'm always learning and building new things.
