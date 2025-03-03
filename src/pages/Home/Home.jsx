@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import SwiperSlider from './Slider';
 
 
 
@@ -11,6 +12,10 @@ const Home = () => {
             
             <section className="flex items-center justify-center min-h-screen">
                <h1>Hello Im home</h1>
+            </section>
+
+            <section className='border-2 border-red-500'>
+                <SwiperSlider/>
             </section>
 
             
