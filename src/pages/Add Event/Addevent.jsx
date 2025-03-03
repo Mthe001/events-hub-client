@@ -7,8 +7,10 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import eventAnimation from '../../assets/add-articles.json'; // Import Lottie animation
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 const Addevent = () => {
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
     const [formData, setFormData] = useState({
         eventName: '',
@@ -57,34 +59,43 @@ const Addevent = () => {
     const handleTagsChange = (selectedOptions) => {
         setFormData({ ...formData, tags: selectedOptions });
     };
-
+    
     const onSubmit = async (data) => {
         try {
-            const imageURL = await imageUpload(formData.image); // Assuming you have this function for uploading images
+            const imageURL = await imageUpload(formData.image);
             const newData = {
                 ...formData,
                 image: imageURL,
                 status: 'pending',
                 postedDate: Date.now(),
-                tags: formData.tags.map(tag => tag.value) // Save tags as values
+                tags: formData.tags.map(tag => tag.value)
             };
 
-            // Post data to your server (example: axiosSecure)
-            await axiosSecure.post("/add-event", newData); // Add event endpoint
-            toast.success("Event added successfully!", { duration: 5000 });
-            setFormData({
-                eventName: '',
-                eventDate: '',
-                location: '',
-                image: null,
-                tags: [],
-                description: ''
-            });
-            navigate("/events");
+            // Send data to server and handle success or failure
+            const response = await axiosPublic.post("/add-event", newData);
+
+            if (response.status === 201) {
+                toast.success("Event added successfully!");
+                setFormData({
+                    eventName: '',
+                    eventDate: '',
+                    location: '',
+                    image: null,
+                    tags: [],
+                    description: ''
+                });
+                navigate("/");
+            } else {
+                toast.error("Error occurred while adding event.");
+            }
         } catch (error) {
-            toast.error("Error occurred while adding event.");
+            toast.error(`Error occurred: ${error.response?.data?.message || error.message}`);
+            console.error("Error adding event:", error);
         }
     };
+
+
+
 
     return (
         <div className="flex items-center justify-center my-20 px-4 lg:px-16">

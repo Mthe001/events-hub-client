@@ -9,14 +9,16 @@ const Home = () => {
             <Helmet>
                 <title>Home | Local Event Hub 240</title>
             </Helmet> 
-            
+
+            <section className='w-[95%] mx-auto'>
+                <SwiperSlider />
+            </section>
+
             <section className="flex items-center justify-center min-h-screen">
                <h1>Hello Im home</h1>
             </section>
 
-            <section className='border-2 border-red-500'>
-                <SwiperSlider/>
-            </section>
+           
 
             
 
