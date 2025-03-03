@@ -17,17 +17,18 @@ const sections = [
         icon: <CalendarPlus className="w-5 h-5 mr-1" />,
     },
     {
-        name: "My Events",
-        id: "my_events",
-        path: "/my-events",
-        icon: <CalendarCheck className="w-5 h-5 mr-1" />,
-    },
-    {
         name: "All Events",
         id: "all_events",
         path: "/all-events",
         icon: <BsCardChecklist className="w-5 h-5 mr-1" />,
     },
+    {
+        name: "My Events",
+        id: "my_events",
+        path: "/my-events",
+        icon: <CalendarCheck className="w-5 h-5 mr-1" />,
+    },
+    
 
 ];
 
