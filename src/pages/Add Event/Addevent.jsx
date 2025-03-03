@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import eventAnimation from '../assets/event-animation.json'; // Import Lottie animation
+import eventAnimation from '../../assets/add-articles.json'; // Import Lottie animation
 
 const Addevent = () => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
@@ -171,7 +171,7 @@ const Addevent = () => {
 
                         {/* Description */}
                         <div className="space-y-2">
-                            <label htmlFor="description" className="text-lg text-gray-600">Description</label>
+                            <label htmlFor="description" className="text-blg text-gray-600">Description</label>
                             <textarea
                                 id="description"
                                 name="description"
