@@ -6,7 +6,7 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 import { AuthContext } from "@/Provider/AuthProvider";
 import { CalendarPlus } from "lucide-react"; // Icon for adding events
 import { CalendarCheck } from "lucide-react"; // Icon for managing events
-
+import { BsCardChecklist } from "react-icons/bs";
 // Updated sections for Local Events Hub
 const sections = [
     { name: "Home", id: "home", path: "/" },
@@ -22,13 +22,22 @@ const sections = [
         path: "/my-events",
         icon: <CalendarCheck className="w-5 h-5 mr-1" />,
     },
+    {
+        name: "All Events",
+        id: "all_events",
+        path: "/all-events",
+        icon: <BsCardChecklist className="w-5 h-5 mr-1" />,
+    },
+
 ];
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
-    const { user, logOut } = useContext(AuthContext); // Using context to get user data and logOut function
+    const { user, logOut } = useContext(AuthContext); 
 
+    
+     
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -62,7 +71,7 @@ const Navbar = () => {
                     <div className="flex items-center space-x-2 cursor-pointer">
                         <div className="text-primary text-2xl font-bold">
                             <TextAnimate animation="slideUp" by="character">
-                                Local Events Hub
+                               Events Hub
                             </TextAnimate>
                         </div>
                     </div>
