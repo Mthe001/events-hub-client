@@ -21,7 +21,7 @@ const Profile = () => {
             }
 
             try {
-                const response = await axios.get(`https://task-management-server-self-iota.vercel.app/users/${currentUser.email}`);
+                const response = await axios.get(`http://localhost:5000/users/${currentUser.email}`);
                 setUser(response.data.user);
             } catch (error) {
                 console.error("Error fetching user profile:", error);
